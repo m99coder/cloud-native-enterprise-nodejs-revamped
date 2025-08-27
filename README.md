@@ -69,3 +69,21 @@ curl \
   -H "h-Custom: foobar" \
   "localhost:8080/auth?username=user&password=Password123\!"
 ```
+
+## SWC
+
+- <https://github.com/swc-project/swc-node>
+- <https://mosano.eu/blog/node-swc-ts/>
+- <https://typestrong.org/ts-node/docs/swc>
+- <https://www.helmbergers.com/ts-node>
+- <https://docs.nestjs.com/recipes/swc>
+
+```shell
+npm install --save-dev \
+  ts-node \
+  @swc/core \
+  @swc/helpers
+
+npm pkg delete scripts.build
+npm pkg set scripts.start="ts-node --swc index.ts"
+```

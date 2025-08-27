@@ -18,11 +18,13 @@
     "fastify": "^5.5.0"
   },
   "devDependencies": {
+    "@swc/core": "^1.13.5",
+    "@swc/helpers": "^0.5.17",
     "@types/node": "^24.3.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "start": "node index.js"
+    "start": "ts-node --swc index.ts"
   }
 }
