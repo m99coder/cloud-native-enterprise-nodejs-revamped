@@ -23,6 +23,12 @@ server.get("/ping", async (request, reply) => {
 
 server.get<{ Querystring: IQueryString; Headers: IHeaders; Reply: IReply }>(
   "/auth",
+  {
+    preValidation: (request, _reply, done) => {
+      const { username } = request.query;
+      done(username !== "admin" ? new Error("Must be admin") : undefined);
+    },
+  },
   async (request, reply) => {
     const { username, password } = request.query;
     const customHeader = request.headers["h-custom"];

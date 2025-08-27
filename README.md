@@ -60,4 +60,12 @@ npm start
 curl \
   -H "h-Custom: foobar" \
   "localhost:8080/auth?username=admin&password=Password123\!"
+
+# adding prevalidation
+npm run build
+npm start
+
+curl \
+  -H "h-Custom: foobar" \
+  "localhost:8080/auth?username=user&password=Password123\!"
 ```
