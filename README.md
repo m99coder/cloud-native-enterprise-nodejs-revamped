@@ -52,4 +52,12 @@ cat >> .gitignore << EOF
 **/*.js
 **/*.map
 EOF
+
+# adding generics
+npm run build
+npm start
+
+curl \
+  -H "h-Custom: foobar" \
+  "localhost:8080/auth?username=admin&password=Password123\!"
 ```
