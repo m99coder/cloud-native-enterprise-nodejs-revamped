@@ -1,4 +1,4 @@
-# cloud-native-enterprise-nodejs-revamped
+# Cloud-native Enterprise Node.js — Revamped
 
 ## Plan
 
