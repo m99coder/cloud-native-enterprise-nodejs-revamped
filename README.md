@@ -47,7 +47,9 @@ npx tsc --init
 npm pkg set scripts.build="tsc -p tsconfig.json"
 npm pkg set scripts.start="node index.js"
 
-echo "**/*.d.ts" >> .gitignore
-echo "**/*.js" >> .gitignore
-echo "**/*.map" >> .gitignore
+cat >> .gitignore << EOF
+**/*.d.ts
+**/*.js
+**/*.map
+EOF
 ```
