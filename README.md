@@ -108,6 +108,7 @@ npm run dev
 - _reorganize structure and config_
 - _adjust npm scripts accordingly_
 - _re-add `npm build` and `npm start` using `NODE_ENV=production`_
+- _use pino for logging (https://github.com/pinojs/pino/blob/main/docs/web.md#fastify)_
 
 ## Testing
 
