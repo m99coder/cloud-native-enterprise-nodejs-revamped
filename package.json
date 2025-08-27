@@ -1,0 +1,17 @@
+{
+  "name": "cloud-native-enterprise-nodejs-revamped",
+  "version": "1.0.0",
+  "description": "Cloud-native Enterprise Node.js — Revamped",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m99coder/cloud-native-enterprise-nodejs-revamped.git"
+  },
+  "keywords": [],
+  "author": "Marco Lehmann (https://m99.io/)",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/m99coder/cloud-native-enterprise-nodejs-revamped/issues"
+  },
+  "homepage": "https://github.com/m99coder/cloud-native-enterprise-nodejs-revamped#readme"
+}
