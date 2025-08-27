@@ -1,5 +1,13 @@
 # cloud-native-enterprise-nodejs-revamped
 
+## Plan
+
+- Pure Fastify (other options are [Koa](https://koajs.com/) and [Hono](https://hono.dev/))
+- TypeScript-first (see <https://fastify.dev/docs/latest/Reference/TypeScript/#typescript>)
+- Bonus: How to use [NestJS](https://nestjs.com/) with Fastify
+
+## Setup
+
 ```shell
 # for version control
 git init
@@ -23,7 +31,4 @@ touch .env
 echo "dotenv" >> .envrc
 ```
 
-## Plan
-
-- NestJS with Fastify or pure Fastify? (other options are [Koa](https://koajs.com/) and [Hono](https://hono.dev/))
-- TypeScript-first (see <https://fastify.dev/docs/latest/Reference/TypeScript/#typescript>)
+## Initialization
