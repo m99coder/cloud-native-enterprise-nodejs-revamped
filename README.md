@@ -68,6 +68,9 @@ npm start
 curl \
   -H "h-Custom: foobar" \
   "localhost:8080/auth?username=user&password=Password123\!"
+
+# add zod
+# see: https://github.com/turkerdev/fastify-type-provider-zod
 ```
 
 ## SWC with Automatic Reload
@@ -77,6 +80,7 @@ curl \
 - <https://docs.nestjs.com/recipes/swc>
 
 ```shell
+# install dependencies
 npm install --save-dev \
   @swc/cli@0.7.8 \
   @swc/core@1.13.5 \
@@ -85,11 +89,29 @@ npm install --save-dev \
   nodemon@3.1.10 \
   concurrently@9.2.1
 
+# update npm scripts
 npm pkg delete scripts.build
 npm pkg delete scripts.start
+
 npm pkg set scripts.watch-compile="swc index.ts -w --out-file index.js"
 npm pkg set scripts.watch-dev="nodemon --watch index.js"
 npm pkg set scripts.dev="concurrently \"npm run watch-compile\" \"npm run watch-dev\""
 
+# run dev server with automatic compilation and reload
 npm run dev
 ```
+
+## The Twelve-Factor App
+
+- <https://12factor.net/>
+
+- _reorganize structure and config_
+- _adjust npm scripts accordingly_
+- _re-add `npm build` and `npm start` using `NODE_ENV=production`_
+
+## Testing
+
+- <https://jestjs.io/>
+- <https://github.com/swc-project/swc-node/tree/master/packages/jest>
+
+- _add tests_
