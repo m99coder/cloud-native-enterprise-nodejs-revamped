@@ -34,10 +34,20 @@ echo "dotenv" >> .envrc
 ## Initialization
 
 ```shell
+# for fastify
 npm install fastify@5.5.0
 npm install --save-dev \
   typescript@5.9.2 \
   @types/node@24.3.0
 
 echo "node_modules" >> .gitignore
+
+# for typescript
+npx tsc --init
+npm pkg set scripts.build="tsc -p tsconfig.json"
+npm pkg set scripts.start="node index.js"
+
+echo "**/*.d.ts" >> .gitignore
+echo "**/*.js" >> .gitignore
+echo "**/*.map" >> .gitignore
 ```
