@@ -70,20 +70,26 @@ curl \
   "localhost:8080/auth?username=user&password=Password123\!"
 ```
 
-## SWC
+## SWC with Automatic Reload
 
 - <https://github.com/swc-project/swc-node>
 - <https://mosano.eu/blog/node-swc-ts/>
-- <https://typestrong.org/ts-node/docs/swc>
-- <https://www.helmbergers.com/ts-node>
 - <https://docs.nestjs.com/recipes/swc>
 
 ```shell
 npm install --save-dev \
-  ts-node \
-  @swc/core \
-  @swc/helpers
+  @swc/cli@0.7.8 \
+  @swc/core@1.13.5 \
+  @swc/helpers@0.5.17 \
+  chokidar@4.0.3 \
+  nodemon@3.1.10 \
+  concurrently@9.2.1
 
 npm pkg delete scripts.build
-npm pkg set scripts.start="ts-node --swc index.ts"
+npm pkg delete scripts.start
+npm pkg set scripts.watch-compile="swc index.ts -w --out-file index.js"
+npm pkg set scripts.watch-dev="nodemon --watch index.js"
+npm pkg set scripts.dev="concurrently \"npm run watch-compile\" \"npm run watch-dev\""
+
+npm run dev
 ```
