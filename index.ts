@@ -1,4 +1,10 @@
 import fastify from "fastify";
+import {
+  serializerCompiler,
+  validatorCompiler,
+  type ZodTypeProvider,
+} from "fastify-type-provider-zod";
+import { z } from "zod/v4";
 
 interface IQueryString {
   username: string;
@@ -17,7 +23,10 @@ interface IReply {
 
 const server = fastify();
 
-server.get("/ping", async (request, reply) => {
+server.setValidatorCompiler(validatorCompiler);
+server.setSerializerCompiler(serializerCompiler);
+
+server.get("/ping", async (_request, _reply) => {
   return "pong\n";
 });
 
@@ -41,6 +50,22 @@ server.get<{ Querystring: IQueryString; Headers: IHeaders; Reply: IReply }>(
     // reply.code(404).send({ error: "Not found" });
   }
 );
+
+server.withTypeProvider<ZodTypeProvider>().route({
+  method: "GET",
+  url: "/",
+  schema: {
+    querystring: z.object({
+      name: z.string().min(4),
+    }),
+    response: {
+      200: z.string(),
+    },
+  },
+  handler: (req, res) => {
+    res.send(req.query.name);
+  },
+});
 
 server.listen({ port: 8080 }, (err, address) => {
   if (err) {

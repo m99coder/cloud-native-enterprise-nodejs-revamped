@@ -71,6 +71,12 @@ curl \
 
 # add zod
 # see: https://github.com/turkerdev/fastify-type-provider-zod
+npm install \
+  fastify-type-provider-zod@5.0.3 \
+  zod@4.1.3
+
+curl "localhost:8080/?name=foo"
+curl "localhost:8080/?name=foobar"
 ```
 
 ## SWC with Automatic Reload
