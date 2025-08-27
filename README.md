@@ -32,3 +32,12 @@ echo "dotenv" >> .envrc
 ```
 
 ## Initialization
+
+```shell
+npm install fastify@5.5.0
+npm install --save-dev \
+  typescript@5.9.2 \
+  @types/node@24.3.0
+
+echo "node_modules" >> .gitignore
+```
