@@ -13,7 +13,7 @@
 git init
 
 # for asdf
-echo "nodejs 24.6.0" >> .tool-versions
+echo "nodejs 24.7.0" >> .tool-versions
 
 # for npm-based package
 npm init \
