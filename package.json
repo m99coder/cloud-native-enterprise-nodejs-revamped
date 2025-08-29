@@ -22,18 +22,18 @@
   },
   "devDependencies": {
     "@types/node": "^24.3.0",
-    "chokidar": "^4.0.3",
     "concurrently": "^9.2.1",
-    "nodemon": "^3.1.10",
-    "tsx": "^4.20.5",
+    "tsdown": "^0.14.2",
     "typescript": "^5.9.2"
   },
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsdown --sourcemap --minify",
+    "build:watch": "tsdown --sourcemap --minify --watch ./src",
+    "start:watch": "node --watch-path=./dist ./dist/index.js",
     "start": "node dist/index.js",
-    "dev": "tsx ./src/index.ts",
-    "dev:watch": "tsx watch ./src/index.ts",
-    "test": "tsx --test ./src/test.ts"
+    "clean": "rm -rf dist",
+    "dev": "concurrently \"npm run build:watch\" \"npm run start:watch\"",
+    "start:watch:debug": "node --inspect --watch-path=./dist ./dist/index.js",
+    "start:debug": "node --inspect ./dist/index.js"
   }
 }

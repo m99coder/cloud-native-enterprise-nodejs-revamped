@@ -135,51 +135,32 @@ curl "localhost:3000/?name=foo"
 curl "localhost:3000/?name=foobar"
 ```
 
-### Using tsx
+### Using tsdown
 
-- <https://tsx.is/>
-
-```shell
-npm install --save-dev \
-  tsx@4.20.5
-
-npm pkg set scripts.dev="tsx ./src/index.ts"
-npm pkg set scripts.dev\:watch="tsx watch ./src/index.ts"
-```
-
-### Using swc
-
-> [!WARNING]
-> There is an issue with rewriting the relative import extension when using `swc`.
->
-> Therefore, `swc` isn’t used for the development workflow.
-
-- <https://swc.rs/>
-- <https://github.com/swc-project/swc/issues/10130>
-- <https://betterstack.com/community/guides/scaling-nodejs/swc-alternatives/>
+- <https://tsdown.dev/>
+- <https://rolldown.rs/> (for bundling javascript files)
+- <https://oxc.rs/> (for `.d.ts` files)
+- <https://dev.to/fedyk/nodejs-built-in-alternative-to-nodemon-2bo2>
 
 ```shell
-# not used at the moment due to the issue with rewriting extensions
+# install dependencies
 npm install --save-dev \
-  @swc/cli@0.7.8 \
-  @swc/core@1.13.5
+  tsdown@0.14.2 \
+  concurrently@9.2.1
 
-npm pkg set scripts.build\:swc="swc ./src -d dist --strip-leading-paths"
+# update npm scripts
+npm pkg set scripts.build="tsdown --sourcemap --minify"
+npm pkg set scripts.build\:watch="tsdown --sourcemap --minify --watch ./src"
+npm pkg set scripts.start\:watch="node --watch-path=./dist ./dist/index.js"
+npm pkg set scripts.start\:debug="node --inspect ./dist/index.js"
+npm pkg set scripts.start="node dist/index.js"
+npm pkg set scripts.dev="concurrently \"npm run build:watch\" \"npm run start:watch\""
+
+# run app with live reload
+npm run dev
 ```
 
-`.swcrc`
-
-```
-{
-  "$schema": "https://swc.rs/schema.json",
-  "jsc": {
-    "parser": {
-      "syntax": "typescript"
-    }
-  },
-  "sourceMaps": true
-}
-```
+`npm run start:debug` uses the `--inspect` flag to enable the Node.js debugger. Find out more about it [here](https://nodejs.org/en/learn/getting-started/debugging).
 
 ## Project Structure
 
