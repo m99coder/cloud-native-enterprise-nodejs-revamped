@@ -102,16 +102,9 @@ echo "dist" >> .gitignore
 npm run dev
 
 # test calls
-curl \
-  -H "h-Custom: foobar" \
-  "localhost:3000/auth?username=admin&password=Password123\!"
-
-curl \
-  -H "h-Custom: foobar" \
-  "localhost:3000/auth?username=user&password=Password123\!"
-
 curl "localhost:3000/?name=foo"
 curl "localhost:3000/?name=foobar"
+curl "localhost:3000/hello"
 ```
 
 `npm run start:debug` uses the `--inspect` flag to enable the Node.js debugger. Find out more about it [here](https://nodejs.org/en/learn/getting-started/debugging).
@@ -162,4 +155,4 @@ Todos:
 - _reorganize structure and config_
 - _adjust npm scripts accordingly_
 - _re-add `npm build` and `npm start` using `NODE_ENV=production`_
-- _use pino for logging (https://github.com/pinojs/pino/blob/main/docs/web.md#fastify)_
+- _use pino for logging (https://github.com/pinojs/pino/blob/main/docs/web.md#fastify) or rather (https://github.com/pinojs/pino-pretty)_
