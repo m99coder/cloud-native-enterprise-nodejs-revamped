@@ -156,8 +156,9 @@ npm pkg set scripts.dev\:watch="tsx watch ./src/index.ts"
 ### Using swc
 
 > [!WARNING]
-> There is an issue with rewriting the relative import extension when using `swc`
-> Therefore, `swc` isn’t used for the development workflow
+> There is an issue with rewriting the relative import extension when using `swc`.
+>
+> Therefore, `swc` isn’t used for the development workflow.
 
 - <https://swc.rs/>
 - <https://github.com/swc-project/swc/issues/10130>
