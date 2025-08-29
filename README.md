@@ -78,6 +78,30 @@ index 81fa1e0..dfdc474 100644
  }
 ```
 
+## The Twelve-Factor App
+
+One useful methodology for building software-as-a-service apps is <https://12factor.net/>.
+
+- **Configuration**: Strict separation of config from code, store config in environment variables, organize them by environment
+- **Backing Services**: No distinction between local and third party services
+- **Build, release, run**: Strict separation between the build (code to build), release (build and config), and run (runtime for specific release) stages
+- **Processes**: Processes are stateless and share nothing, any data that needs to be persisted is stored in a stateful backing service (e.g. database)
+- **Port Binding**: Web apps export HTTP as a service by binding to a port, backing services can be composed this way, URLs are provided through the config
+- **Disposability**: Processes can be started and stopped at any time, minimize startup time, shut down gracefully when receiving `SIGTERM`, processes are robust against sudden death
+- **Dev/prod Parity**: Keep the gap between development and production small (Continuous Deployment), resist to use different backing services between development and production
+- **Logs**: Never concern with routing or storage of output stream, write unbuffered to `stdout` instead
+
+## Configuration
+
+- <https://github.com/dotenvx/dotenvx>
+- <https://sdorra.dev/posts/2023-08-22-type-safe-environment>
+
+```shell
+npm install --save @dotenvx/dotenvx@1.49.0
+```
+
+## Build Phase
+
 ```shell
 npm pkg set scripts.build="tsc -p tsconfig.json"
 npm pkg set scripts.clean="rm -rf dist"
@@ -111,29 +135,7 @@ curl "localhost:3000/?name=foo"
 curl "localhost:3000/?name=foobar"
 ```
 
-## The Twelve-Factor App
-
-One useful methodology for building software-as-a-service apps is <https://12factor.net/>.
-
-- **Configuration**: Strict separation of config from code, store config in environment variables, organize them by environment
-- **Backing Services**: No distinction between local and third party services
-- **Build, release, run**: Strict separation between the build (code to build), release (build and config), and run (runtime for specific release) stages
-- **Processes**: Processes are stateless and share nothing, any data that needs to be persisted is stored in a stateful backing service (e.g. database)
-- **Port Binding**: Web apps export HTTP as a service by binding to a port, backing services can be composed this way, URLs are provided through the config
-- **Disposability**: Processes can be started and stopped at any time, minimize startup time, shut down gracefully when receiving `SIGTERM`, processes are robust against sudden death
-- **Dev/prod Parity**: Keep the gap between development and production small (Continuous Deployment), resist to use different backing services between development and production
-- **Logs**: Never concern with routing or storage of output stream, write unbuffered to `stdout` instead
-
-## Configuration
-
-- <https://github.com/dotenvx/dotenvx>
-- <https://sdorra.dev/posts/2023-08-22-type-safe-environment>
-
-```shell
-npm install --save @dotenvx/dotenvx@1.49.0
-```
-
-## Using rspack and automatic reload
+### Using rspack and automatic reload
 
 - <https://rspack.rs/guide/tech/typescript>
 
