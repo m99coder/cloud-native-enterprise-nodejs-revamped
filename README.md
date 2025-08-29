@@ -41,7 +41,7 @@ echo "dotenv" >> .envrc
 npm install --save \
   fastify@5.5.0 \
   fastify-type-provider-zod@5.0.3 \
-  zod@4.1.3
+  zod@4.1.5
 
 npm install --save-dev \
   typescript@5.9.2 \
@@ -121,8 +121,20 @@ curl "localhost:3000/?name=foobar"
 - <https://fastify.dev/docs/latest/Guides/Getting-Started/>
 
 ```shell
-# run tests
-npx tsx ./src/**/*.test.ts
+# update .gitignore
+cat >> .gitignore <<EOF
+coverage
+lcov.info
+EOF
+
+# run tests with coverage
+npx tsx \
+  --experimental-test-coverage \
+  --test-reporter=spec \
+  --test-reporter-destination=stdout \
+  --test-reporter=lcov \
+  --test-reporter-destination=lcov.info \
+  ./src/**/*.test.ts
 ```
 
 ## Testing
@@ -132,10 +144,11 @@ npx tsx ./src/**/*.test.ts
 - <https://github.com/kulshekhar/ts-jest>
 - <https://tsx.is/node-enhancement#test-runner>
 - <https://blog.appsignal.com/2024/07/17/exploring-the-nodejs-native-test-runner.html>
+- <https://node-tap.org/>
 
 Todos:
 
-- _migrate to jest_
+- _migrate to jest or tap_
 - _add tests_
 
 ## Project Structure

@@ -18,7 +18,7 @@
     "@dotenvx/dotenvx": "^1.49.0",
     "fastify": "^5.5.0",
     "fastify-type-provider-zod": "^5.0.3",
-    "zod": "^4.1.3"
+    "zod": "^4.1.5"
   },
   "devDependencies": {
     "@types/node": "^24.3.0",
@@ -30,8 +30,8 @@
     "build": "tsdown --sourcemap --minify",
     "build:watch": "tsdown --sourcemap --minify --watch ./src",
     "start:watch": "node --watch-path=./dist ./dist/server.js",
-    "start": "node dist/server.js",
-    "clean": "rm -rf dist",
+    "start": "node ./dist/server.js",
+    "clean": "rm -rf ./dist",
     "dev": "concurrently \"npm run build:watch\" \"npm run start:watch\"",
     "start:watch:debug": "node --inspect --watch-path=./dist ./dist/server.js",
     "start:debug": "node --inspect ./dist/server.js"
