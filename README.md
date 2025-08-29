@@ -38,44 +38,16 @@ echo "dotenv" >> .envrc
 
 ```shell
 # for fastify
-npm install fastify@5.5.0
+npm install --save \
+  fastify@5.5.0 \
+  fastify-type-provider-zod@5.0.3 \
+  zod@4.1.3
+
 npm install --save-dev \
   typescript@5.9.2 \
   @types/node@24.3.0
 
 echo "node_modules" >> .gitignore
-
-# for typescript
-npx tsc --init
-```
-
-```diff
-diff --git a/tsconfig.json b/tsconfig.json
-index 81fa1e0..dfdc474 100644
---- a/tsconfig.json
-+++ b/tsconfig.json
-@@ -2,8 +2,8 @@
-   // Visit https://aka.ms/tsconfig to read more about this file
-   "compilerOptions": {
-     // File Layout
--    // "rootDir": "./src",
--    // "outDir": "./dist",
-+    "rootDir": "./src",
-+    "outDir": "./dist",
-
-     // Environment Settings
-     // See also https://aka.ms/tsconfig/module
-@@ -39,6 +39,9 @@
-     "isolatedModules": true,
-     "noUncheckedSideEffectImports": true,
-     "moduleDetection": "force",
--    "skipLibCheck": true
-+    "skipLibCheck": true,
-+
-+    // Custom Options
-+    "rewriteRelativeImportExtensions": true
-   }
- }
 ```
 
 ## The Twelve-Factor App
@@ -102,39 +74,6 @@ npm install --save @dotenvx/dotenvx@1.49.0
 
 ## Build Phase
 
-```shell
-npm pkg set scripts.build="tsc -p tsconfig.json"
-npm pkg set scripts.clean="rm -rf dist"
-npm pkg set scripts.start="node dist/index.js"
-
-echo "dist" >> .gitignore
-
-# adding generics
-npm run build
-npm start
-
-curl \
-  -H "h-Custom: foobar" \
-  "localhost:3000/auth?username=admin&password=Password123\!"
-
-# adding prevalidation
-npm run build
-npm start
-
-curl \
-  -H "h-Custom: foobar" \
-  "localhost:3000/auth?username=user&password=Password123\!"
-
-# add zod
-# see: https://github.com/turkerdev/fastify-type-provider-zod
-npm install --save \
-  fastify-type-provider-zod@5.0.3 \
-  zod@4.1.3
-
-curl "localhost:3000/?name=foo"
-curl "localhost:3000/?name=foobar"
-```
-
 ### Using tsdown
 
 - <https://tsdown.dev/>
@@ -156,8 +95,23 @@ npm pkg set scripts.start\:debug="node --inspect ./dist/index.js"
 npm pkg set scripts.start="node dist/index.js"
 npm pkg set scripts.dev="concurrently \"npm run build:watch\" \"npm run start:watch\""
 
+# update .gitignore
+echo "dist" >> .gitignore
+
 # run app with live reload
 npm run dev
+
+# test calls
+curl \
+  -H "h-Custom: foobar" \
+  "localhost:3000/auth?username=admin&password=Password123\!"
+
+curl \
+  -H "h-Custom: foobar" \
+  "localhost:3000/auth?username=user&password=Password123\!"
+
+curl "localhost:3000/?name=foo"
+curl "localhost:3000/?name=foobar"
 ```
 
 `npm run start:debug` uses the `--inspect` flag to enable the Node.js debugger. Find out more about it [here](https://nodejs.org/en/learn/getting-started/debugging).
