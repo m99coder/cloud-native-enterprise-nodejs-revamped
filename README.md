@@ -90,9 +90,9 @@ npm install --save-dev \
 # update npm scripts
 npm pkg set scripts.build="tsdown --sourcemap --minify"
 npm pkg set scripts.build\:watch="tsdown --sourcemap --minify --watch ./src"
-npm pkg set scripts.start\:watch="node --watch-path=./dist ./dist/index.js"
-npm pkg set scripts.start\:debug="node --inspect ./dist/index.js"
-npm pkg set scripts.start="node dist/index.js"
+npm pkg set scripts.start\:watch="node --watch-path=./dist ./dist/server.js"
+npm pkg set scripts.start\:debug="node --inspect ./dist/server.js"
+npm pkg set scripts.start="node dist/server.js"
 npm pkg set scripts.dev="concurrently \"npm run build:watch\" \"npm run start:watch\""
 
 # update .gitignore
@@ -116,6 +116,15 @@ curl "localhost:3000/?name=foobar"
 
 `npm run start:debug` uses the `--inspect` flag to enable the Node.js debugger. Find out more about it [here](https://nodejs.org/en/learn/getting-started/debugging).
 
+## Getting Started
+
+- <https://fastify.dev/docs/latest/Guides/Getting-Started/>
+
+```shell
+# run tests
+npx tsx ./src/**/*.test.ts
+```
+
 ## Testing
 
 - <https://jestjs.io/>
@@ -126,6 +135,7 @@ curl "localhost:3000/?name=foobar"
 
 Todos:
 
+- _migrate to jest_
 - _add tests_
 
 ## Project Structure

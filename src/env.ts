@@ -4,6 +4,7 @@ import { z } from "zod";
 dotenvx.config();
 
 const schema = z.object({
+  HOST: z.ipv4().default("0.0.0.0"),
   PORT: z.coerce.number().int().positive().default(3000),
   NODE_ENV: z
     .enum(["development", "production", "test"])
