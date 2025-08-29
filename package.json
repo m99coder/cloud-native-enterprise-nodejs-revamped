@@ -32,7 +32,7 @@
     "start:watch": "node --watch-path=./dist ./dist/server.js",
     "start": "node ./dist/server.js",
     "clean": "rm -rf ./dist",
-    "dev": "concurrently \"npm run build:watch\" \"npm run start:watch\"",
+    "dev": "npm run build && concurrently -r \"npm run build:watch\" \"npm run start:watch\"",
     "start:watch:debug": "node --inspect --watch-path=./dist ./dist/server.js",
     "start:debug": "node --inspect ./dist/server.js"
   }
