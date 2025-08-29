@@ -120,6 +120,8 @@ One useful methodology for building software-as-a-service apps is <https://12fac
 - **Dev/prod Parity**: Keep the gap between development and production small (Continuous Deployment), resist to use different backing services between development and production
 - **Logs**: Never concern with routing or storage of output stream, write unbuffered to `stdout` instead
 
+Todos:
+
 - _reorganize structure and config_
 - _adjust npm scripts accordingly_
 - _re-add `npm build` and `npm start` using `NODE_ENV=production`_
@@ -129,5 +131,7 @@ One useful methodology for building software-as-a-service apps is <https://12fac
 
 - <https://jestjs.io/>
 - <https://github.com/swc-project/swc-node/tree/master/packages/jest>
+
+Todos:
 
 - _add tests_
