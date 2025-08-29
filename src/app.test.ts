@@ -14,7 +14,7 @@ describe("routes", () => {
       method: "GET",
       url: "/hello",
     });
-    assert.strictEqual<number>(
+    assert.strictEqual(
       response.statusCode,
       200,
       "returns a status code of 200"
