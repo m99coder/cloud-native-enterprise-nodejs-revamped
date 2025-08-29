@@ -5,7 +5,7 @@ import {
   type ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import { z } from "zod/v4";
-import env from "./env.ts";
+import env from "./env";
 
 const port: number = env.PORT;
 

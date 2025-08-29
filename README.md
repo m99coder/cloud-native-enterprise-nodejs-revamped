@@ -51,10 +51,10 @@ npx tsc --init
 
 ```diff
 diff --git a/tsconfig.json b/tsconfig.json
-index 81fa1e0..dfdc474 100644
+index 81fa1e0..4787507 100644
 --- a/tsconfig.json
 +++ b/tsconfig.json
-@@ -2,8 +2,8 @@
+@@ -2,12 +2,13 @@
    // Visit https://aka.ms/tsconfig to read more about this file
    "compilerOptions": {
      // File Layout
@@ -65,7 +65,13 @@ index 81fa1e0..dfdc474 100644
 
      // Environment Settings
      // See also https://aka.ms/tsconfig/module
-@@ -39,6 +39,9 @@
+-    "module": "nodenext",
++    "module": "esnext",
++    "moduleResolution": "bundler",
+     "target": "esnext",
+     "types": [],
+     // For nodejs:
+@@ -39,6 +40,9 @@
      "isolatedModules": true,
      "noUncheckedSideEffectImports": true,
      "moduleDetection": "force",
@@ -127,7 +133,7 @@ curl \
 
 # add zod
 # see: https://github.com/turkerdev/fastify-type-provider-zod
-npm install \
+npm install --save \
   fastify-type-provider-zod@5.0.3 \
   zod@4.1.3
 
@@ -135,9 +141,47 @@ curl "localhost:3000/?name=foo"
 curl "localhost:3000/?name=foobar"
 ```
 
-### Using rspack and automatic reload
+### Using tsc
 
-- <https://rspack.rs/guide/tech/typescript>
+```shell
+npm install --save-dev \
+  tsx@4.20.5
+
+npm pkg set scripts.dev="tsx ./src/index.ts"
+npm pkg set scripts.dev\:watch="tsx watch ./src/index.ts"
+```
+
+### Using swc
+
+> [!WARNING]
+> There is an issue with rewriting the relative import extension when using `swc`
+
+- <https://swc.rs/>
+- <https://github.com/swc-project/swc/issues/10130>
+- <https://betterstack.com/community/guides/scaling-nodejs/swc-alternatives/>
+
+```shell
+# not used at the moment due to the issue with rewriting extensions
+npm install --save-dev \
+  @swc/cli@0.7.8 \
+  @swc/core@1.13.5
+
+npm pkg set scripts.build\:swc="swc ./src -d dist --strip-leading-paths"
+```
+
+`.swcrc`
+
+```
+{
+  "$schema": "https://swc.rs/schema.json",
+  "jsc": {
+    "parser": {
+      "syntax": "typescript"
+    }
+  },
+  "sourceMaps": true
+}
+```
 
 _tbw._
 
@@ -158,6 +202,8 @@ Todos:
 
 - <https://jestjs.io/>
 - <https://github.com/swc-project/swc-node/tree/master/packages/jest>
+- <https://jestjs.io/docs/getting-started#using-typescript>
+- <https://github.com/kulshekhar/ts-jest>
 
 Todos:
 
