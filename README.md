@@ -157,6 +157,7 @@ npm pkg set scripts.dev\:watch="tsx watch ./src/index.ts"
 
 > [!WARNING]
 > There is an issue with rewriting the relative import extension when using `swc`
+> Therefore, `swc` isn’t used for the development workflow
 
 - <https://swc.rs/>
 - <https://github.com/swc-project/swc/issues/10130>
@@ -184,8 +185,6 @@ npm pkg set scripts.build\:swc="swc ./src -d dist --strip-leading-paths"
   "sourceMaps": true
 }
 ```
-
-_tbw._
 
 ## Project Structure
 
