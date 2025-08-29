@@ -141,7 +141,9 @@ curl "localhost:3000/?name=foo"
 curl "localhost:3000/?name=foobar"
 ```
 
-### Using tsc
+### Using tsx
+
+- <https://tsx.is/>
 
 ```shell
 npm install --save-dev \
