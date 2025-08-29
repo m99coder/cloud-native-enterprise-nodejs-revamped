@@ -200,6 +200,8 @@ Todos:
 - <https://github.com/swc-project/swc-node/tree/master/packages/jest>
 - <https://jestjs.io/docs/getting-started#using-typescript>
 - <https://github.com/kulshekhar/ts-jest>
+- <https://tsx.is/node-enhancement#test-runner>
+- <https://blog.appsignal.com/2024/07/17/exploring-the-nodejs-native-test-runner.html>
 
 Todos:
 
