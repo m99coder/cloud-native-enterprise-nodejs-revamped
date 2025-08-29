@@ -116,6 +116,18 @@ curl "localhost:3000/?name=foobar"
 
 `npm run start:debug` uses the `--inspect` flag to enable the Node.js debugger. Find out more about it [here](https://nodejs.org/en/learn/getting-started/debugging).
 
+## Testing
+
+- <https://jestjs.io/>
+- <https://jestjs.io/docs/getting-started#using-typescript>
+- <https://github.com/kulshekhar/ts-jest>
+- <https://tsx.is/node-enhancement#test-runner>
+- <https://blog.appsignal.com/2024/07/17/exploring-the-nodejs-native-test-runner.html>
+
+Todos:
+
+- _add tests_
+
 ## Project Structure
 
 - <https://alexkondov.com/tao-of-node/>
@@ -128,16 +140,3 @@ Todos:
 - _adjust npm scripts accordingly_
 - _re-add `npm build` and `npm start` using `NODE_ENV=production`_
 - _use pino for logging (https://github.com/pinojs/pino/blob/main/docs/web.md#fastify)_
-
-## Testing
-
-- <https://jestjs.io/>
-- <https://github.com/swc-project/swc-node/tree/master/packages/jest>
-- <https://jestjs.io/docs/getting-started#using-typescript>
-- <https://github.com/kulshekhar/ts-jest>
-- <https://tsx.is/node-enhancement#test-runner>
-- <https://blog.appsignal.com/2024/07/17/exploring-the-nodejs-native-test-runner.html>
-
-Todos:
-
-- _add tests_
