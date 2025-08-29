@@ -51,10 +51,10 @@ npx tsc --init
 
 ```diff
 diff --git a/tsconfig.json b/tsconfig.json
-index 81fa1e0..4787507 100644
+index 81fa1e0..dfdc474 100644
 --- a/tsconfig.json
 +++ b/tsconfig.json
-@@ -2,12 +2,13 @@
+@@ -2,8 +2,8 @@
    // Visit https://aka.ms/tsconfig to read more about this file
    "compilerOptions": {
      // File Layout
@@ -65,13 +65,7 @@ index 81fa1e0..4787507 100644
 
      // Environment Settings
      // See also https://aka.ms/tsconfig/module
--    "module": "nodenext",
-+    "module": "esnext",
-+    "moduleResolution": "bundler",
-     "target": "esnext",
-     "types": [],
-     // For nodejs:
-@@ -39,6 +40,9 @@
+@@ -39,6 +39,9 @@
      "isolatedModules": true,
      "noUncheckedSideEffectImports": true,
      "moduleDetection": "force",
