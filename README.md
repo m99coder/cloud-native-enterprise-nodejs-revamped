@@ -93,7 +93,7 @@ npm pkg set scripts.build\:watch="tsdown --sourcemap --minify --watch ./src"
 npm pkg set scripts.start\:watch="node --watch-path=./dist ./dist/server.js"
 npm pkg set scripts.start\:debug="node --inspect ./dist/server.js"
 npm pkg set scripts.start="node dist/server.js"
-npm pkg set scripts.dev="concurrently \"npm run build:watch\" \"npm run start:watch\""
+npm pkg set scripts.dev="npm run build && concurrently -r \"npm run build:watch\" \"npm run start:watch\""
 
 # update .gitignore
 echo "dist" >> .gitignore
