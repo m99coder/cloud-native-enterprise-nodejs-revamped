@@ -23,6 +23,9 @@ npm init \
   --init-version "1.0.0" \
   --yes
 
+# use ESM
+npm pkg set type=module
+
 # for .envrc
 # https://direnv.net/#the-stdlib
 # “Note that this functionality is not supported in .env files. If the coexistence of both is needed, one can use .envrc for leveraging stdlib and append dotenv at the end of it to instruct direnv to also read the .env file next.”
@@ -44,14 +47,43 @@ echo "node_modules" >> .gitignore
 
 # for typescript
 npx tsc --init
-npm pkg set scripts.build="tsc -p tsconfig.json"
-npm pkg set scripts.start="node index.js"
+```
 
-cat >> .gitignore << EOF
-**/*.d.ts
-**/*.js
-**/*.map
-EOF
+```diff
+diff --git a/tsconfig.json b/tsconfig.json
+index 81fa1e0..dfdc474 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -2,8 +2,8 @@
+   // Visit https://aka.ms/tsconfig to read more about this file
+   "compilerOptions": {
+     // File Layout
+-    // "rootDir": "./src",
+-    // "outDir": "./dist",
++    "rootDir": "./src",
++    "outDir": "./dist",
+
+     // Environment Settings
+     // See also https://aka.ms/tsconfig/module
+@@ -39,6 +39,9 @@
+     "isolatedModules": true,
+     "noUncheckedSideEffectImports": true,
+     "moduleDetection": "force",
+-    "skipLibCheck": true
++    "skipLibCheck": true,
++
++    // Custom Options
++    "rewriteRelativeImportExtensions": true
+   }
+ }
+```
+
+```shell
+npm pkg set scripts.build="tsc -p tsconfig.json"
+npm pkg set scripts.clean="rm -rf dist"
+npm pkg set scripts.start="node dist/index.js"
+
+echo "dist" >> .gitignore
 
 # adding generics
 npm run build
@@ -59,7 +91,7 @@ npm start
 
 curl \
   -H "h-Custom: foobar" \
-  "localhost:8080/auth?username=admin&password=Password123\!"
+  "localhost:3000/auth?username=admin&password=Password123\!"
 
 # adding prevalidation
 npm run build
@@ -67,7 +99,7 @@ npm start
 
 curl \
   -H "h-Custom: foobar" \
-  "localhost:8080/auth?username=user&password=Password123\!"
+  "localhost:3000/auth?username=user&password=Password123\!"
 
 # add zod
 # see: https://github.com/turkerdev/fastify-type-provider-zod
@@ -75,36 +107,8 @@ npm install \
   fastify-type-provider-zod@5.0.3 \
   zod@4.1.3
 
-curl "localhost:8080/?name=foo"
-curl "localhost:8080/?name=foobar"
-```
-
-## SWC with Automatic Reload
-
-- <https://github.com/swc-project/swc-node>
-- <https://mosano.eu/blog/node-swc-ts/>
-- <https://docs.nestjs.com/recipes/swc>
-
-```shell
-# install dependencies
-npm install --save-dev \
-  @swc/cli@0.7.8 \
-  @swc/core@1.13.5 \
-  @swc/helpers@0.5.17 \
-  chokidar@4.0.3 \
-  nodemon@3.1.10 \
-  concurrently@9.2.1
-
-# update npm scripts
-npm pkg delete scripts.build
-npm pkg delete scripts.start
-
-npm pkg set scripts.watch-compile="swc index.ts -w --out-file index.js"
-npm pkg set scripts.watch-dev="nodemon --watch index.js"
-npm pkg set scripts.dev="concurrently \"npm run watch-compile\" \"npm run watch-dev\""
-
-# run dev server with automatic compilation and reload
-npm run dev
+curl "localhost:3000/?name=foo"
+curl "localhost:3000/?name=foobar"
 ```
 
 ## The Twelve-Factor App
@@ -119,6 +123,27 @@ One useful methodology for building software-as-a-service apps is <https://12fac
 - **Disposability**: Processes can be started and stopped at any time, minimize startup time, shut down gracefully when receiving `SIGTERM`, processes are robust against sudden death
 - **Dev/prod Parity**: Keep the gap between development and production small (Continuous Deployment), resist to use different backing services between development and production
 - **Logs**: Never concern with routing or storage of output stream, write unbuffered to `stdout` instead
+
+## Configuration
+
+- <https://github.com/dotenvx/dotenvx>
+- <https://sdorra.dev/posts/2023-08-22-type-safe-environment>
+
+```shell
+npm install --save @dotenvx/dotenvx@1.49.0
+```
+
+## Using rspack and automatic reload
+
+- <https://rspack.rs/guide/tech/typescript>
+
+_tbw._
+
+## Project Structure
+
+- <https://alexkondov.com/tao-of-node/>
+- <https://solidbook.io/>
+- <https://khalilstemmler.com/articles/domain-driven-design-intro/>
 
 Todos:
 

@@ -5,6 +5,9 @@ import {
   type ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import { z } from "zod/v4";
+import env from "./env.ts";
+
+const port: number = env.PORT;
 
 interface IQueryString {
   username: string;
@@ -67,7 +70,7 @@ server.withTypeProvider<ZodTypeProvider>().route({
   },
 });
 
-server.listen({ port: 8080 }, (err, address) => {
+server.listen({ port }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
