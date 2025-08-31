@@ -128,9 +128,11 @@ echo "coverage" >> .gitignore
 # update scripts
 npm pkg set scripts.clean="rm -rf ./coverage ./dist"
 npm pkg set scripts.test="NODE_V8_COVERAGE=./coverage c8 -r html npx tsx --test --experimental-test-coverage src/**/*.test.ts"
+npm pkg set scripts.test\:watch="npx tsx --watch --test src/**/*.test.ts"
 
-# run tests with coverage
+# run tests with coverage or in watch mode
 npm test
+npm run test:watch
 ```
 
 ## Getting Started

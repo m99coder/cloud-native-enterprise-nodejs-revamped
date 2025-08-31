@@ -36,6 +36,7 @@
     "dev": "npm run build && concurrently -r \"npm run build:watch\" \"npm run start:watch\"",
     "start:watch:debug": "node --inspect --watch-path=./dist ./dist/server.js",
     "start:debug": "node --inspect ./dist/server.js",
-    "test": "NODE_V8_COVERAGE=./coverage c8 -r html npx tsx --test --experimental-test-coverage src/**/*.test.ts"
+    "test": "NODE_V8_COVERAGE=./coverage c8 -r html npx tsx --test --experimental-test-coverage src/**/*.test.ts",
+    "test:watch": "npx tsx --watch --test src/**/*.test.ts"
   }
 }
