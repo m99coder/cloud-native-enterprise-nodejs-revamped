@@ -10,6 +10,8 @@
 
 - Pure Fastify (other options are [Koa](https://koajs.com/) and [Hono](https://hono.dev/))
 - TypeScript-first (see <https://fastify.dev/docs/latest/Reference/TypeScript/#typescript>)
+- Release stage with building a multi-stage Docker image
+- Run stage with deployment to local k3d/k3s cluster, together with Grafana LGTM stack
 - Bonus: How to use [NestJS](https://nestjs.com/) with Fastify
 
 ## Setup
