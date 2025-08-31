@@ -88,6 +88,7 @@ npm install --save-dev \
   concurrently@9.2.1
 
 # update npm scripts
+npm pkg set scripts.clean="rm -rf ./dist"
 npm pkg set scripts.build="tsdown --sourcemap --minify"
 npm pkg set scripts.build\:watch="tsdown --sourcemap --minify --watch ./src"
 npm pkg set scripts.start\:watch="node --watch-path=./dist ./dist/server.js"
@@ -114,20 +115,19 @@ curl "localhost:3000/hello"
 - <https://fastify.dev/docs/latest/Guides/Getting-Started/>
 
 ```shell
+# install dependencies
+npm install --save-dev \
+  c8@10.1.3
+
 # update .gitignore
-cat >> .gitignore <<EOF
-coverage
-lcov.info
-EOF
+echo "coverage" >> .gitignore
+
+# update scripts
+npm pkg set scripts.clean="rm -rf ./coverage ./dist"
+npm pkg set scripts.test="NODE_V8_COVERAGE=./coverage c8 -r html npx tsx --test --experimental-test-coverage src/**/*.test.ts"
 
 # run tests with coverage
-npx tsx \
-  --experimental-test-coverage \
-  --test-reporter=spec \
-  --test-reporter-destination=stdout \
-  --test-reporter=lcov \
-  --test-reporter-destination=lcov.info \
-  ./src/**/*.test.ts
+npm test
 ```
 
 ## Testing
