@@ -1,5 +1,8 @@
 # Cloud-native Enterprise Node.js — Revamped
 
+> [!NOTE]
+> This is the predecessor of [this project](https://github.com/m99coder/cloud-native-enterprise-nodejs) and it comes with TypeScript, ESM, tsdown Rust bundler, and c8 native V8 code coverage beyond other cutting edge tools and approaches.
+
 ## Plan
 
 - Pure Fastify (other options are [Koa](https://koajs.com/) and [Hono](https://hono.dev/))
