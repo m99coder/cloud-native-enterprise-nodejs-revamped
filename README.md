@@ -120,8 +120,7 @@ curl "localhost:3000/hello"
 
 ```shell
 # install dependencies
-npm install --save-dev \
-  c8@10.1.3
+npm install --save-dev c8@10.1.3
 
 # update .gitignore
 echo "coverage" >> .gitignore
