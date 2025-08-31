@@ -110,9 +110,7 @@ curl "localhost:3000/hello"
 
 `npm run start:debug` uses the `--inspect` flag to enable the Node.js debugger. Find out more about it [here](https://nodejs.org/en/learn/getting-started/debugging).
 
-## Getting Started
-
-- <https://fastify.dev/docs/latest/Guides/Getting-Started/>
+### Testing
 
 ```shell
 # install dependencies
@@ -130,19 +128,9 @@ npm pkg set scripts.test="NODE_V8_COVERAGE=./coverage c8 -r html npx tsx --test 
 npm test
 ```
 
-## Testing
+## Getting Started
 
-- <https://jestjs.io/>
-- <https://jestjs.io/docs/getting-started#using-typescript>
-- <https://github.com/kulshekhar/ts-jest>
-- <https://tsx.is/node-enhancement#test-runner>
-- <https://blog.appsignal.com/2024/07/17/exploring-the-nodejs-native-test-runner.html>
-- <https://node-tap.org/>
-
-Todos:
-
-- _migrate to jest or tap_
-- _add tests_
+- <https://fastify.dev/docs/latest/Guides/Getting-Started/>
 
 ## Project Structure
 
