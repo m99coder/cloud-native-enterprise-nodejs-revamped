@@ -143,7 +143,7 @@ npm run test:watch
 
 Todos:
 
-- _SIGTERM and expection handler for server_
+- _SIGTERM and exception handler for server_
 
 ## Project Structure
 
