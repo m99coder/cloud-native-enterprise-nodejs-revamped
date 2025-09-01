@@ -141,6 +141,10 @@ npm run test:watch
 
 - <https://fastify.dev/docs/latest/Guides/Getting-Started/>
 
+Todos:
+
+- _SIGTERM and expection handler for server_
+
 ## Project Structure
 
 - <https://alexkondov.com/tao-of-node/>
@@ -153,3 +157,4 @@ Todos:
 - _adjust npm scripts accordingly_
 - _re-add `npm build` and `npm start` using `NODE_ENV=production`_
 - _use pino for logging (https://github.com/pinojs/pino/blob/main/docs/web.md#fastify) or rather (https://github.com/pinojs/pino-pretty)_
+- _Makefile for building, releasing, and running_
