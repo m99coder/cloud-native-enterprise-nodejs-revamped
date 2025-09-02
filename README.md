@@ -48,7 +48,7 @@ echo "dotenv" >> .envrc
 # for fastify
 npm install --save \
   fastify@5.5.0 \
-  fastify-type-provider-zod@5.1.0 \
+  fastify-type-provider-zod@6.0.0 \
   zod@4.1.5
 
 npm install --save-dev \
