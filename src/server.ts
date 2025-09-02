@@ -12,6 +12,8 @@ const start = async () => {
     },
     // generate request id as UUIDv4 using built-in crypto module
     genReqId: () => crypto.randomUUID(),
+    // disable automatic request logging to demo a custom logging using hooks
+    disableRequestLogging: true,
   });
 
   // SIGNALS ---

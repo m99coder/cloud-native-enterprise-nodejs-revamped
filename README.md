@@ -143,7 +143,6 @@ npm run test:watch
 
 Todos:
 
-- _Add request time measurement_
 - _Add health check endpoint_
 - _Redact sensitive information in the logger_
 
