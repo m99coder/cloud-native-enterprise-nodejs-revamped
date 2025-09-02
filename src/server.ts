@@ -10,6 +10,8 @@ const start = async () => {
     logger: {
       level: "info",
     },
+    // generate request id as UUIDv4 using built-in crypto module
+    genReqId: () => crypto.randomUUID(),
   });
 
   // SIGNALS ---
