@@ -8,6 +8,9 @@ import { z } from "zod/v4";
 
 import route from "./route";
 
+// decorate FastifyReply
+// see: https://fastify.dev/docs/v5.4.x/Reference/Decorators/
+// see: https://fastify.dev/docs/latest/Reference/TypeScript/#plugins
 declare module "fastify" {
   interface FastifyReply {
     startTime: number;
@@ -35,6 +38,7 @@ const createServer = (opts: FastifyServerOptions = {}) => {
       {
         url: req.raw.url,
         statusCode: res.raw.statusCode,
+        // calculate duration and log it
         durationMs: res.getTime() - res.startTime,
       },
       "Request completed"
