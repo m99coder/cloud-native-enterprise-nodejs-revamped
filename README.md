@@ -143,10 +143,9 @@ npm run test:watch
 
 Todos:
 
-- _Inject request ID as UUID_
-- _Redact sensitive information in the logger_
-- _Add optional request time measurement_
+- _Add request time measurement_
 - _Add health check endpoint_
+- _Redact sensitive information in the logger_
 
 ## Project Structure
 
