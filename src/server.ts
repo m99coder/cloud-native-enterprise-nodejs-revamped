@@ -9,6 +9,15 @@ const start = async () => {
   const fastify = createServer({
     logger: {
       level: "info",
+      // redact sensitive headers (~2% overhead for JSON handling)
+      // https://fastify.dev/docs/latest/Reference/Logging/#log-redaction
+      // https://getpino.io/#/docs/redaction
+      // https://getpino.io/#/docs/api?id=redact-array-object
+      // redact: ["headers.authorization"],
+      redact: {
+        paths: ["headers.authorization"],
+        censor: "**redacted**",
+      },
     },
     // generate request id as UUIDv4 using built-in crypto module
     genReqId: () => crypto.randomUUID(),

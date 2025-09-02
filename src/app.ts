@@ -6,7 +6,9 @@ import {
 } from "fastify-type-provider-zod";
 import { z } from "zod/v4";
 
-import route from "./route";
+import headersRoute from "./routes/headers";
+import healthCheckRoute from "./routes/health";
+import codesRoute from "./routes/codes";
 
 // decorate FastifyReply
 // see: https://fastify.dev/docs/v5.4.x/Reference/Decorators/
@@ -26,6 +28,7 @@ const createServer = (opts: FastifyServerOptions = {}) => {
   // fastify.decorateReply("getTime", () => performance.now());
   fastify.decorateReply("getTime", () => Date.now());
 
+  // custom logging using hooks
   fastify.addHook("onRequest", (req, res, done) => {
     // persist start time
     res.startTime = res.getTime();
@@ -46,10 +49,12 @@ const createServer = (opts: FastifyServerOptions = {}) => {
     done();
   });
 
-  fastify.register(route);
-
   fastify.setValidatorCompiler(validatorCompiler);
   fastify.setSerializerCompiler(serializerCompiler);
+
+  fastify.register(headersRoute);
+  fastify.register(healthCheckRoute);
+  fastify.register(codesRoute);
 
   fastify.withTypeProvider<ZodTypeProvider>().route({
     method: "GET",

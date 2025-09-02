@@ -141,10 +141,14 @@ npm run test:watch
 
 - <https://fastify.dev/docs/latest/Guides/Getting-Started/>
 
-Todos:
-
-- _Add health check endpoint_
-- _Redact sensitive information in the logger_
+```shell
+# test calls
+curl -i "localhost:3000/health"
+curl -i "localhost:3000/headers" \
+  -H "Authorization: Bearer my-secret-token-that-will-not-get-logged" \
+  -H "X-Will-Get-Logged: This header will still get logged"
+curl -i "localhost:3000/codes?code=304"
+```
 
 ## Project Structure
 

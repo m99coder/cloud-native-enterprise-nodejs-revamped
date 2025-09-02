@@ -1,8 +1,8 @@
 import { FastifyInstance } from "fastify";
 
 const route = async (fastify: FastifyInstance) => {
-  fastify.get("/hello", async () => {
-    return { hello: "world" };
+  fastify.get("/health", (_req, res) => {
+    res.code(200).send();
   });
 };
 
