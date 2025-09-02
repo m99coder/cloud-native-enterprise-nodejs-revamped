@@ -147,7 +147,6 @@ Todos:
 - _Redact sensitive information in the logger_
 - _Add optional request time measurement_
 - _Add health check endpoint_
-- _SIGTERM and exception handler for server_
 
 ## Project Structure
 
