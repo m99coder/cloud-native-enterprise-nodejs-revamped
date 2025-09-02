@@ -1,9 +1,6 @@
 // import EventEmitter from "events";
 import createServer from "./app";
-import env from "./env";
-
-const HOST: string = env.HOST;
-const PORT: number = env.PORT;
+import config from "./config";
 
 const start = async () => {
   const fastify = createServer({
@@ -67,7 +64,10 @@ const start = async () => {
   // START ---
 
   try {
-    await fastify.listen({ port: PORT, host: HOST });
+    await fastify.listen({
+      port: config.server.port,
+      host: config.server.host,
+    });
   } catch (err) {
     throw err;
   }

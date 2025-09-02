@@ -6,6 +6,7 @@ import {
 } from "fastify-type-provider-zod";
 import { z } from "zod/v4";
 
+import config, { DurationGranularity } from "./config";
 import headersRoute from "./routes/headers";
 import healthCheckRoute from "./routes/health";
 import codesRoute from "./routes/codes";
@@ -25,8 +26,11 @@ const createServer = (opts: FastifyServerOptions = {}) => {
 
   // add custom properties to keep track of timings
   fastify.decorateReply("startTime", 0);
-  // fastify.decorateReply("getTime", () => performance.now());
-  fastify.decorateReply("getTime", () => Date.now());
+  fastify.decorateReply("getTime", () =>
+    config.server.durationGranularity === DurationGranularity.Default
+      ? Date.now()
+      : performance.now()
+  );
 
   // custom logging using hooks
   fastify.addHook("onRequest", (req, res, done) => {
