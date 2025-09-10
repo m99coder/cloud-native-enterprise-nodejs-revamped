@@ -92,7 +92,7 @@ npm install --save @dotenvx/dotenvx@1.49.0
 ```shell
 # install dependencies
 npm install --save-dev \
-  tsdown@0.14.2 \
+  tsdown@0.15.0 \
   concurrently@9.2.1
 
 # update npm scripts
