@@ -21,7 +21,7 @@
 git init
 
 # for asdf
-echo "nodejs 24.7.0" >> .tool-versions
+echo "nodejs 24.8.0" >> .tool-versions
 
 # for npm-based package
 npm init \
@@ -49,7 +49,7 @@ echo "dotenv" >> .envrc
 npm install --save \
   fastify@5.5.0 \
   fastify-type-provider-zod@6.0.0 \
-  zod@4.1.5
+  zod@4.1.8
 
 npm install --save-dev \
   typescript@5.9.2 \
