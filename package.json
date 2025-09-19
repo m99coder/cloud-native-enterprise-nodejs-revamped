@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/m99coder/cloud-native-enterprise-nodejs-revamped#readme",
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.49.0",
+    "@dotenvx/dotenvx": "^1.50.1",
     "fastify": "^5.6.0",
     "fastify-type-provider-zod": "^6.0.0",
     "zod": "^4.1.9"
