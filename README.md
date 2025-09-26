@@ -21,7 +21,7 @@
 git init
 
 # for asdf
-echo "nodejs 24.8.0" >> .tool-versions
+echo "nodejs 24.9.0" >> .tool-versions
 
 # for npm-based package
 npm init \
@@ -47,13 +47,13 @@ echo "dotenv" >> .envrc
 ```shell
 # for fastify
 npm install --save \
-  fastify@5.5.0 \
+  fastify@5.6.1 \
   fastify-type-provider-zod@6.0.0 \
-  zod@4.1.8
+  zod@4.1.11
 
 npm install --save-dev \
   typescript@5.9.2 \
-  @types/node@24.3.0
+  @types/node@24.5.2
 
 echo "node_modules" >> .gitignore
 ```
@@ -77,7 +77,7 @@ One useful methodology for building software-as-a-service apps is <https://12fac
 - <https://sdorra.dev/posts/2023-08-22-type-safe-environment>
 
 ```shell
-npm install --save @dotenvx/dotenvx@1.49.0
+npm install --save @dotenvx/dotenvx@1.51.0
 ```
 
 ## Build Phase
@@ -92,7 +92,7 @@ npm install --save @dotenvx/dotenvx@1.49.0
 ```shell
 # install dependencies
 npm install --save-dev \
-  tsdown@0.15.0 \
+  tsdown@0.15.4 \
   concurrently@9.2.1
 
 # update npm scripts
