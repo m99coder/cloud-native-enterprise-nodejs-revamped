@@ -49,11 +49,11 @@ echo "dotenv" >> .envrc
 npm install --save \
   fastify@5.6.1 \
   fastify-type-provider-zod@6.0.0 \
-  zod@4.1.11
+  zod@4.1.12
 
 npm install --save-dev \
   typescript@5.9.2 \
-  @types/node@24.5.2
+  @types/node@24.7.1
 
 echo "node_modules" >> .gitignore
 ```
@@ -92,7 +92,7 @@ npm install --save @dotenvx/dotenvx@1.51.0
 ```shell
 # install dependencies
 npm install --save-dev \
-  tsdown@0.15.4 \
+  tsdown@0.15.6 \
   concurrently@9.2.1
 
 # update npm scripts
