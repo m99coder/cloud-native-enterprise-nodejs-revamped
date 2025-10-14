@@ -53,7 +53,7 @@ npm install --save \
 
 npm install --save-dev \
   typescript@5.9.2 \
-  @types/node@24.7.1
+  @types/node@24.7.2
 
 echo "node_modules" >> .gitignore
 ```
@@ -92,7 +92,7 @@ npm install --save @dotenvx/dotenvx@1.51.0
 ```shell
 # install dependencies
 npm install --save-dev \
-  tsdown@0.15.6 \
+  tsdown@0.15.7 \
   concurrently@9.2.1
 
 # update npm scripts
